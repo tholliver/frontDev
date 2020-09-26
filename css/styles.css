@@ -20,10 +20,9 @@ body {
   
 }
 
-
 #realbox {
   margin-top: 400px;
-  position: absolute;
+  position: relative;
   width: 16em;
   height: 2em;
   color: azure;
@@ -33,7 +32,7 @@ body {
   border: 2px solid #d8e2dc;
   outline: none; /*OUTLINE rounded effect focus off*/
 }
-
+/*THE BACKGROUND COLOR */
 ::-webkit-input-placeholder {
   font-family: "Quicksand", sans-serif;
   text-align: center;
@@ -53,6 +52,7 @@ body {
 
 #realbox-input-wrapper form input:hover {
   color: #00aced;
+
   text-shadow: 0 0 15px #00aced;
   transition: all 0.4s ease;
 }

@@ -24,11 +24,12 @@ function realTiming() {
 document.getElementById("realbox").focus();
 document.getElementById("realbox").select();
 
-//Context no selecction
+
+/*//Context no selecction
 document.addEventListener(
   "contextmenu",
   function (e) {
     e.preventDefault();
   },
   false
-);
+);*/
