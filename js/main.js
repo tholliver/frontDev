@@ -2,30 +2,40 @@ $(window).scroll(function () {
   $(".scroll-down").css("opacity", 1 - $(window).scrollTop() / 200);
 });
 
-function realTiming() {
-  //THE displaying CLOCK
-  var rClock = new Date();
-  var hora = rClock.getHours();
-  var mins = rClock.getMinutes();
-  var secs = rClock.getSeconds();
+/*TIME SHOW */
 
-  var AP = hora < 12 ? "AM" : "PM";
-  hora = hora > 12 ? hora - 12 : hora;
-  hora = ("0" + hora).slice(-2);
-  mins = ("0" + mins).slice(-2);
-  secs = ("0" + secs).slice(-2);
+var clock = new Vue({
+  el: '#clock',
+  data: {
+      time: '',
+      date: ''
+  }
+});
 
-  document.getElementById('datetime').innerHTML =
-    hora + " : " + mins + " : " + secs + " " + AP;
-  var t = setTimeout(realTiming,500);
+var week = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+var timerID = setInterval(updateTime, 1000);
+updateTime();
+function updateTime() {
+  var cd = new Date();
+  clock.time = zeroPadding(cd.getHours(), 2) + ':' + zeroPadding(cd.getMinutes(), 2) + ':' + zeroPadding(cd.getSeconds(), 2);
+  clock.date = zeroPadding(cd.getFullYear(), 4) + '-' + zeroPadding(cd.getMonth()+1, 2) + '-' + zeroPadding(cd.getDate(), 2) + ' ' + week[cd.getDay()];
+};
+
+function zeroPadding(num, digit) {
+  var zero = '';
+  for(var i = 0; i < digit; i++) {
+      zero += '0';
+  }
+  return (zero + num).slice(-digit);
 }
 
 //The focus the cursor in the search bar
+
 document.getElementById("realbox").focus();
 document.getElementById("realbox").select();
 
 
-/*//Context no selecction
+/*//Context no selecction no RIGHT CLICK
 document.addEventListener(
   "contextmenu",
   function (e) {
